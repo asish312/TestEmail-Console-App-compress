@@ -70,8 +70,7 @@ namespace TestEmail
             //    zip.AddFile(rootFolder+authorsFile);
             //    zip.Save("C:\\TestFiles\\" + myUniqueFileName);
             //}
-
-
+            
             string testCompessFile = @"http://MLMLEE4VSQL35//KwikTestFiles/" + myUniqueFileName;
 
             //string html = "<html><body><p>Click here for more information: <a href=\"http://localhost/Test/hola.zip\">Asish Link to download kwik File</a></body></html>";
