@@ -109,6 +109,8 @@ namespace TestEmail
         }
 
 
+
+
         public static bool Compress(List<string> fileList, string zipName, bool isDirStruct)
         {
             try
