@@ -16,13 +16,16 @@ namespace TestEmail
 {
     class Program
     {
+        public static string answer = "";
         static void Main(string[] args)
         {
 
-            string answer = "";
+           
             do
             {
-
+                 Console.WriteLine("Would you like to Enter your Email ID: ? ___@conduent.com .For e.g asish.panda");
+                //Get the user's response and validate that it is either 'y' or 'n'.
+                answer = Console.ReadLine();
 
                 doScheduler();
                 //Ask the user if they want to roll the dice
@@ -34,26 +37,49 @@ namespace TestEmail
 
        static void  doScheduler()
         {
-            // Default folder
-             string rootFolder = @"C:\TestFiles\";
-            // Files to be deleted    
-            string authorsFile = "NV170868002789.pdf";
-            string FileName = Path.GetFileNameWithoutExtension(rootFolder + authorsFile);
 
+            // Default folder
+            string rootFolder = @"D:\Kwik10mb+\20151123EI000000001";
             var myUniqueFileName = $@"{DateTime.Now.Ticks}.zip";
 
             using (ZipFile zip = new ZipFile())
-
             {
-                zip.AddFile(rootFolder+authorsFile);
-                zip.Save("C:\\TestFiles\\" + myUniqueFileName);
+                zip.AddDirectory(rootFolder);
+                zip.Save("//MLMLEE4VSQL35/TestAsish/" + myUniqueFileName);
             }
-            string test = @"http://localhost/Test/"+ myUniqueFileName;
+
+            //string[] subdirs = Directory.GetDirectories(rootFolder);
+            //List<string> map_data = new List<string>();
+
+            //foreach (var batch in subdirs)
+            //{
+            //    map_data.Add(batch);
+            //}
+
+            //Compress(map_data, myUniqueFileName, false);
+
+
+
+            // Files to be deleted    
+            //string authorsFile = "NV170868002789.pdf";
+            //string FileName = Path.GetFileNameWithoutExtension(rootFolder + authorsFile);           
+
+            //using (ZipFile zip = new ZipFile())
+
+            //{
+            //    zip.AddFile(rootFolder+authorsFile);
+            //    zip.Save("C:\\TestFiles\\" + myUniqueFileName);
+            //}
+
+
+            string testCompessFile = @"http://MLMLEE4VSQL35//KwikTestFiles/" + myUniqueFileName;
 
             //string html = "<html><body><p>Click here for more information: <a href=\"http://localhost/Test/hola.zip\">Asish Link to download kwik File</a></body></html>";
-            string html = "<html><body><p>Click here for more information: <a href="+test+">Link to download</a></body></html>";
+            string html = "<html><body><p>Click here for more information: <a href="+ testCompessFile + ">Link to download</a></body></html>";
 
-            SendNotificationARS(html, "Regarding Kwik Email which are having 10mb+", "asish.panda@conduent.com");
+            SendNotificationARS(html, "Regarding Kwik Email which are having 10mb+", answer.Trim()+"@conduent.com");
+
+            Console.WriteLine("/n Thanks {0} .. An email Sent with Download Link to {1}",answer,answer+"@conduent.com");
             //Delete If Req
             //try
             //{
@@ -108,7 +134,13 @@ namespace TestEmail
             return SendSuccess;
         }
 
+        private static void AddFolderToZip(ZipFile zipFile, string packageRootFolder, string addFolder)
+        {
+            string sourceFolder = Path.Combine(packageRootFolder, addFolder);
 
+            if (Directory.Exists(sourceFolder))
+                zipFile.AddDirectory(sourceFolder, addFolder);
+        }
 
 
         public static bool Compress(List<string> fileList, string zipName, bool isDirStruct)
