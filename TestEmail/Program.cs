@@ -26,8 +26,16 @@ namespace TestEmail
                  Console.WriteLine("Would you like to Enter your Email ID: ? ___@conduent.com .For e.g asish.panda");
                 //Get the user's response and validate that it is either 'y' or 'n'.
                 answer = Console.ReadLine();
+                try
+                {
+                    doScheduler();
+                }
+                catch (Exception Exc)
+                {
 
-                doScheduler();
+                    Console.WriteLine("File fail to Process", Exc.Message);
+                }
+              
                 //Ask the user if they want to roll the dice
                 Console.WriteLine("Would you like to roll the dice (y or n)?");
                 //Get the user's response and validate that it is either 'y' or 'n'.
@@ -78,7 +86,7 @@ namespace TestEmail
 
             SendNotificationARS(html, "Regarding Kwik Email which are having 10mb+", answer.Trim()+"@conduent.com");
 
-            Console.WriteLine("/n Thanks {0} .. An email Sent with Download Link to {1}",answer,answer+"@conduent.com");
+            Console.WriteLine("Thanks {0} .. An email Sent with Download Link to {1}",answer,answer+"@conduent.com");
             //Delete If Req
             //try
             //{
@@ -128,7 +136,7 @@ namespace TestEmail
             }
             catch (Exception Exc)
             {
-                
+                Console.WriteLine("File fail to send Email.Check Internet ",Exc.Message);
             }
             return SendSuccess;
         }
