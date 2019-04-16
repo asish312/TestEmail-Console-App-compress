@@ -11,16 +11,9 @@ namespace TestEmail
     {
         public static string answer = "";
         static void Main(string[] args)
-        {
-
-           
+        {           
             do
             {
-
-
-
-
-
                  Console.WriteLine("Would you like to Enter your Email ID: ? ___@conduent.com .For e.g asish.panda");
                 //Get the user's response and validate that it is either 'y' or 'n'.
                 answer = Console.ReadLine();
@@ -70,8 +63,7 @@ namespace TestEmail
             //}
             
             string testCompessFile = @"http://MLMLEE4VSQL35//KwikTestFiles/" + myUniqueFileName;
-
-            //string html = "<html><body><p>Click here for more information: <a href=\"http://localhost/Test/hola.zip\">Asish Link to download kwik File</a></body></html>";
+           
             string html = "<html><body><p>Click here for more information: <a href="+ testCompessFile + ">Link to download</a></body></html>";
 
             SendNotificationARS(html, "Regarding Kwik Email which are having 10mb+", answer.Trim()+"@conduent.com");
