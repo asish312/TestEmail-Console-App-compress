@@ -2,15 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Configuration;
 using System.Net.Mail;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Net;
 
 namespace TestEmail
 {
@@ -23,6 +16,11 @@ namespace TestEmail
            
             do
             {
+
+
+
+
+
                  Console.WriteLine("Would you like to Enter your Email ID: ? ___@conduent.com .For e.g asish.panda");
                 //Get the user's response and validate that it is either 'y' or 'n'.
                 answer = Console.ReadLine();
